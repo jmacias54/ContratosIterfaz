@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: employees_gender_fk
+      author: jesus.macias
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: gender_id
+            baseTableName: employees
+            constraintName: fk_employees_gender
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: genders
+  - changeSet:
+      id: employees_jobs_fk
+      author: jesus.macias
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: job_id
+            baseTableName: employees
+            constraintName: fk_employees_jobs
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: jobs

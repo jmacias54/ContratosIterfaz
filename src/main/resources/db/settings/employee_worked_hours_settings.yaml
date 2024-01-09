@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: fk_worked_hrs_employees
+      author: jesus.macias
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: employee_id
+            baseTableName: employee_worked_hours
+            constraintName: fk_worked_hrs_employees
+            deferrable: false
+            initiallyDeferred: false
+            referencedColumnNames: id
+            referencedTableName: employees

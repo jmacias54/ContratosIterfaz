@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: db/create_genders.yaml
+  - include:
+      file: db/create_jobs.yaml
+  - include:
+      file: db/create_employees.yaml
+  - include:
+      file: db/settings/employees_settings.yaml
+  - include:
+      file: db/create_employee_worked_hours.yaml
+  - include:
+      file: db/settings/employee_worked_hours_settings.yaml
+
+
+
+
+
+

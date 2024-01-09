@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_employee_worked_hours_table
+      author: jesus.macias.benitez
+      changes:
+        - createTable:
+            tableName: employee_worked_hours
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: employee_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: worked_hours
+                  type: BIGINT
+              - column:
+                  name: worked_date
+                  type: DATETIME
+                  constraints:
+                    nullable: false

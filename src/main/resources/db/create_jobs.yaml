@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_jobs_table
+      author: jesus.macias.benitez
+      changes:
+        - createTable:
+            tableName: jobs
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: salary
+                  type: NUMBER(9,2)
