@@ -37,6 +37,15 @@ public class JpaEmployeeRepository implements EmployeeRepository {
 	}
 
 	@Override
+	public EmployeeDomain getById(Long userId) {
+		if(this.employeeRepositoryJpa.findById(userId).isPresent()) {
+			return this.employeeToEmployeeDomainMapper.map(this.employeeRepositoryJpa.findById(userId).get());
+		}
+
+		return null;
+	}
+
+	@Override
 	public EmployeeDomain create(EmployeeCreateInput input) {
 		Employee employee = this.employeeCreateInputToEmployeeMapper.map(input);
 		employee.setJob(this.jobRepositoryJpa.findById(input.getJobId()).get());

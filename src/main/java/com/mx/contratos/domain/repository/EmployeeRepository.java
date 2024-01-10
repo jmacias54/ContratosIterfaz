@@ -11,6 +11,8 @@ public interface EmployeeRepository {
 
 	boolean exists(Long userId);
 
+	EmployeeDomain getById(Long userId);
+
 	EmployeeDomain create(EmployeeCreateInput input);
 
 	List<EmployeeDomain> search(Long jobId);

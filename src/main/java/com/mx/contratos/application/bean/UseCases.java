@@ -7,6 +7,7 @@ import com.mx.contratos.domain.use_case.employee.create.EmployeeCreateUseCase;
 import com.mx.contratos.domain.use_case.employee.list.EmployeeSearchUseCase;
 import com.mx.contratos.domain.use_case.worked_hours.add.EmployeeAddHoursInputValidator;
 import com.mx.contratos.domain.use_case.worked_hours.add.EmployeeAddHoursUseCase;
+import com.mx.contratos.domain.use_case.worked_hours.search.PaymentSearchUseCase;
 import com.mx.contratos.domain.use_case.worked_hours.search.WorkedHoursSearchUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class UseCases {
 
+
+	@Bean
+	public PaymentSearchUseCase paymentSearchUseCase(
+		EmployeeWorkedHoursRepository employeeWorkedHoursRepository,
+		EmployeeRepository employeeRepository
+	) {
+		return new PaymentSearchUseCase(employeeWorkedHoursRepository, employeeRepository);
+	}
 
 	@Bean
 	public WorkedHoursSearchUseCase workedHoursSearchUseCase(

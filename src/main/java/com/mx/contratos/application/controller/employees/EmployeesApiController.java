@@ -15,6 +15,7 @@ import com.mx.contratos.domain.use_case.employee.create.EmployeeCreateUseCase;
 import com.mx.contratos.domain.use_case.employee.list.EmployeeSearchUseCase;
 import com.mx.contratos.domain.use_case.worked_hours.add.EmployeeAddHoursInput;
 import com.mx.contratos.domain.use_case.worked_hours.add.EmployeeAddHoursUseCase;
+import com.mx.contratos.domain.use_case.worked_hours.search.PaymentSearchUseCase;
 import com.mx.contratos.domain.use_case.worked_hours.search.WorkedHoursSearchUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +42,7 @@ public class EmployeesApiController {
 	private final EmployeeAddHoursUseCase employeeAddHoursUseCase;
 	private final EmployeeSearchUseCase employeeSearchUseCase;
 	private final WorkedHoursSearchUseCase workedHoursSearchUseCase;
+	private final PaymentSearchUseCase paymentSearchUseCase;
 
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -81,5 +84,20 @@ public class EmployeesApiController {
 					request.getStartDate(),
 					request.getEndDate()
 				), Boolean.TRUE));
+	}
+
+	@PostMapping(path = "/getPayment", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<GetPaymentEmployeeResponse> getPayment(@RequestBody @Valid EmployeeGetWorkedHoursRequest request) {
+		BigDecimal paymentTotal = paymentSearchUseCase.execute(
+			request.getEmployeeId(),
+			request.getStartDate(),
+			request.getEndDate()
+		);
+
+		return ResponseEntity.ok(
+			new GetPaymentEmployeeResponse(
+				paymentTotal,
+				Boolean.TRUE
+			));
 	}
 }
