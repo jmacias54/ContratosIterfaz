@@ -11,7 +11,9 @@ import com.mx.contratos.infrastructure.persistence.jpa.repository.JobRepositoryJ
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class JpaEmployeeRepository implements EmployeeRepository {
@@ -28,7 +30,6 @@ public class JpaEmployeeRepository implements EmployeeRepository {
 	}
 
 
-
 	@Override
 	public boolean exists(Long userId) {
 		Optional<Employee> employee = this.employeeRepositoryJpa.findById(userId);
@@ -43,5 +44,15 @@ public class JpaEmployeeRepository implements EmployeeRepository {
 
 		Employee employeeSaved = this.employeeRepositoryJpa.save(employee);
 		return this.employeeToEmployeeDomainMapper.map(employeeSaved);
+	}
+
+	@Override
+	public List<EmployeeDomain> search(Long jobId) {
+
+		return this.employeeRepositoryJpa.findAllByJobId(jobId)
+			.stream()
+			.map(this.employeeToEmployeeDomainMapper::map)
+			.collect(
+				Collectors.toList());
 	}
 }

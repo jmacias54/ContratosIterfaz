@@ -2,10 +2,8 @@ package com.mx.contratos.domain.repository;
 
 import com.mx.contratos.domain.model.EmployeeDomain;
 import com.mx.contratos.domain.use_case.employee.create.EmployeeCreateInput;
-import com.mx.contratos.domain.use_case.worked_hours.add.EmployeeAddHoursInput;
-import com.mx.contratos.infrastructure.persistence.jpa.entity.EmployeeWorkedHours;
 
-import java.util.Date;
+import java.util.List;
 
 public interface EmployeeRepository {
 
@@ -14,6 +12,8 @@ public interface EmployeeRepository {
 	boolean exists(Long userId);
 
 	EmployeeDomain create(EmployeeCreateInput input);
+
+	List<EmployeeDomain> search(Long jobId);
 
 
 }

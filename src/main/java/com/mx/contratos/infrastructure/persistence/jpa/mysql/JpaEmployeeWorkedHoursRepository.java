@@ -10,6 +10,7 @@ import com.mx.contratos.infrastructure.persistence.jpa.repository.EmployeeWorked
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -35,5 +36,21 @@ public class JpaEmployeeWorkedHoursRepository implements EmployeeWorkedHoursRepo
 		entity.setEmployee(this.employeeRepositoryJpa.findById(input.getEmployeeId()).get());
 		EmployeeWorkedHours entitySaved = this.employeeWorkedHoursRepositoryJpa.save(entity);
 		return this.employeeWorkedHoursToEmployeeWorkedHoursDomainMapper.map(entitySaved);
+	}
+
+	@Override
+	public Long findByEmployeeIdAndWorkedDateRange(
+		Long employeeId,
+		Date startDate,
+		Date endDate
+	) {
+
+		return this.employeeWorkedHoursRepositoryJpa.findByEmployeeIdAndWorkedDateRange(
+				employeeId,
+				startDate,
+				endDate
+			).stream()
+			.mapToLong(EmployeeWorkedHours::getWorkedHours)
+			.sum();
 	}
 }

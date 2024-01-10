@@ -12,4 +12,6 @@ public interface EmployeeWorkedHoursRepository {
 
 	EmployeeWorkedHoursDomain create(EmployeeAddHoursInput input);
 
+	Long findByEmployeeIdAndWorkedDateRange(Long employeeId, Date startDate, Date endDate);
+
 }

@@ -74,7 +74,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 
-
 	@ExceptionHandler({ItemNotFoundException.class})
 	public ResponseEntity<ResponseError> itemNotFoundException(final Exception ex, final HttpServletRequest request) {
 		logger.error("itemNotFoundException Occured:: URL " + request.getRequestURI() + getParameters(request));
