@@ -51,7 +51,7 @@ public class EmployeeCreateRequest {
 	private String lastName;
 
 	@NotNull(message = "employee.birthdate.null")
-	@Schema(description = "id of financial entity", example = "1234")
+	@Schema(description = "id of financial entity", example = "2023-01-01")
 	@BirthdateIsValid(message = "employee.birthdate.invalid")// validar que sea mayor a 18 años
 	@JsonProperty("birthdate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

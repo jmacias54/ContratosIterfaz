@@ -10,6 +10,7 @@ import com.mx.contratos.infrastructure.persistence.jpa.repository.GenderReposito
 import com.mx.contratos.infrastructure.persistence.jpa.repository.JobRepositoryJpa;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Date;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -24,6 +25,14 @@ public class JpaEmployeeRepository implements EmployeeRepository {
 	@Override
 	public boolean nameAndLastnameIsUnique(String name, String lastName) {
 		return Optional.ofNullable(this.employeeRepositoryJpa.findByNameAndLastName(name, lastName)).isEmpty();
+	}
+
+
+
+	@Override
+	public boolean exists(Long userId) {
+		Optional<Employee> employee = this.employeeRepositoryJpa.findById(userId);
+		return Optional.ofNullable(employee).isEmpty();
 	}
 
 	@Override
