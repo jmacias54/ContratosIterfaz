@@ -1,4 +1,4 @@
-package com.mx.contratos.ContratosIterfaz;
+package com.mx.contratos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

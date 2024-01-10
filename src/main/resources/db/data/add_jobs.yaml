@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-jobs
+      author: jesus.macias
+      changes:
+        - insert:
+            tableName: jobs
+            columns:
+              - column:
+                  name: name
+                  value: Electricista
+              - column:
+                  name: salary
+                  value: 320.50
+        - insert:
+            tableName: jobs
+            columns:
+              - column:
+                  name: name
+                  value: Plomero
+              - column:
+                  name: salary
+                  value: 250.00
+        - insert:
+            tableName: jobs
+            columns:
+              - column:
+                  name: name
+                  value: Programador
+              - column:
+                  name: salary
+                  value: 750.00

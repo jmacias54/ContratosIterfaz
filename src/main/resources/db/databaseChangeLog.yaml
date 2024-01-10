@@ -11,6 +11,11 @@ databaseChangeLog:
       file: db/create_employee_worked_hours.yaml
   - include:
       file: db/settings/employee_worked_hours_settings.yaml
+  - include:
+      file: db/data/add_genders.yaml
+  - include:
+      file: db/data/add_jobs.yaml
+
 
 
 

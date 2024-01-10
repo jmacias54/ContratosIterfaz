@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-genders
+      author: jesus.macias
+      changes:
+        - insert:
+            tableName: genders
+            columns:
+              - column:
+                  name: name
+                  value: Masculino
+        - insert:
+            tableName: genders
+            columns:
+              - column:
+                  name: name
+                  value: Femenino

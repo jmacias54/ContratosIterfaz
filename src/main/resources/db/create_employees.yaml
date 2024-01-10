@@ -27,7 +27,7 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
-                  name: lastName
+                  name: last_name
                   type: VARCHAR(255)
               - column:
                   name: birthdate
